@@ -13,11 +13,11 @@ typedef long long ll;
 typedef pair <int, int> PII;
 
 typedef double NUM;
-const NUM EPS = 1e-6, MAGIC = 2.71828e18, PI = acos(-1);
+const NUM EPS = 1e-12, MAGIC = 2.71828e18, PI = acos(-1);
 
 inline NUM sqr(NUM a){return a*a;}
 inline NUM cmp(NUM a, NUM b){
-    return fabs(a - b) > EPS ? a - b : 0; // 整数几何：return a-b;
+    return (1+fabs(a))*EPS<fabs(a-b)?a-b:0; // 整数几何：return a-b;
 }
 
 struct VEC {NUM x,y;} NOVEC = {MAGIC,MAGIC}; // 二维向量或坐标
