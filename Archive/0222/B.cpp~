@@ -1,0 +1,36 @@
+#include <cstdio>
+#include <cstring>
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#define rep(i,n) for (int i = 0; i < (int)(n); i++)
+#define foreach(it,v) for (__typeof((v).end()) it = (v).begin(); it != (v).end(); it++)
+using namespace std;
+const int N = 20005;
+int n, m, times;
+int dfn[N], low[N];
+set <int> E[N];
+set <int> treeEdge[N];
+
+void dfs(int u) {
+	dfn[u] = ++times;
+	foreach (it, E[u]) {
+		if (vis[*it]) continue;
+	}
+}
+
+int main() {
+	freopen("ear.in", "r", stdin);
+	freopen("ear.out", "w", stdout);
+	scanf("%d%d", &n, &m);
+	rep (i, m) {
+		int u, v;
+		scanf("%d%d", &u, &v);
+		u--; v--;
+		E[u].insert(v);
+		E[v].insert(u);
+	}
+	times = 0;
+	dfs(0, -1);
+	return 0;
+}
