@@ -45,11 +45,11 @@ public:
             int r=-1,c=-1;
             for(int j=0;j<n;++j) if(cmp(A[m][j],0)<0){
                 int k=-1;
+                if(c<0) c=j;
                 for(int i=0;i<m;++i) if(cmp(A[i][j],0)>0)
                     if(k==-1 || cmp(A[k][n]/A[k][j],A[i][n]/A[i][j])>0) k=i;
                 if(k!=-1 && cmp(low,tmp=A[m][j]*A[k][n]/A[k][j])>0)
                     low=tmp,r=k,c=j;
-                if(r<0) c=j;
             }
             if(c<0) break;
             if(r<0) return 1.0/0.0;
